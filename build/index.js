@@ -11,6 +11,8 @@ const usuario_routes_1 = __importDefault(require("./routes/usuario-routes"));
 const editorial_routes_1 = __importDefault(require("./routes/editorial-routes"));
 const libro_routes_1 = __importDefault(require("./routes/libro-routes"));
 const categoria_routes_1 = __importDefault(require("./routes/categoria-routes"));
+const carrera_routes_1 = __importDefault(require("./routes/carrera-routes"));
+const prestamo_routes_1 = __importDefault(require("./routes/prestamo-routes"));
 class Server {
     constructor() {
         this.app = (0, express_1.default)(); //inicializando la app
@@ -30,6 +32,8 @@ class Server {
         this.app.use('/editorial', editorial_routes_1.default);
         this.app.use('/libro', libro_routes_1.default);
         this.app.use('/categoria', categoria_routes_1.default);
+        this.app.use('/carreras', carrera_routes_1.default);
+        this.app.use('/prestamo', prestamo_routes_1.default);
     }
     start() {
         this.app.listen(this.app.get('port'), () => {

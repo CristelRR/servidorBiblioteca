@@ -7,6 +7,8 @@ import editorialRoutes from "./routes/editorial-routes";
 import libroRoutes from "./routes/libro-routes";
 import { categoriaController } from "./controllers/CategoriaController";
 import categoriaRoutes from "./routes/categoria-routes";
+import carreraRoutes from "./routes/carrera-routes";
+import prestamoRoutes from "./routes/prestamo-routes";
 
 
 class Server {
@@ -32,6 +34,8 @@ class Server {
         this.app.use('/editorial', editorialRoutes);
         this.app.use('/libro', libroRoutes);
         this.app.use('/categoria', categoriaRoutes);
+        this.app.use('/carreras', carreraRoutes);
+        this.app.use('/prestamo', prestamoRoutes)
     }
 
     start():void{
