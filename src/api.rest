@@ -1,0 +1,67 @@
+#/*USUARIO*/
+### Consulta todos los usuarios
+GET http://localhost:4000/usuario
+
+### Consulta un usuario
+GET http://localhost:4000/usuario/4
+
+### Agregar un usuario
+POST http://localhost:4000/usuario
+Content-Type: application/json
+
+   {
+    "nombre": "Luis",
+    "ap_paterno": "Valtierra ",
+    "ap_materno": "Juarez",
+    "correo": "luisvj@gmail.com",
+    "contraseña": "154",
+    "tipo": "Alumno",
+    "id_carrera": 5
+  }
+
+### Actualizar un usuario
+PUT http://localhost:4000/usuario/4
+Content-Type: application/json
+
+  {
+    "nombre": "Lalo",
+    "ap_paterno": "González ",
+    "ap_materno": "Ortiz",
+    "correo": "eduardo@gmail.com",
+    "contraseña": "12345678",
+    "tipo": "Alumno",
+    "id_carrera": 8
+  }
+
+### Eliminar un usuario
+DELETE http://localhost:4000/usuario/8
+Content-Type: application/json
+
+
+#/*EDITORIAL*/
+### Consulta todas  las editoriales
+GET http://localhost:4000/editorial
+
+### Consulta una editorial
+GET http://localhost:4000/editorial/11
+
+### Agregar una editorial
+POST http://localhost:4000/editorial
+Content-Type: application/json
+
+    {
+    "nom_editorial": "Diaz de Santos"
+  }
+
+### Actualizar una editorial
+PUT http://localhost:4000/editorial/11
+Content-Type: application/json
+
+  {
+    "nom_editorial": "Santos"
+  }
+
+### Eliminar una editorial
+DELETE http://localhost:4000/editorial/11
+Content-Type: application/json
+
