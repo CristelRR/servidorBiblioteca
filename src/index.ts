@@ -5,6 +5,8 @@ import indexRoutes from "./routes/index-routes";
 import usuarioRoutes from "./routes/usuario-routes";
 import editorialRoutes from "./routes/editorial-routes";
 import libroRoutes from "./routes/libro-routes";
+import { categoriaController } from "./controllers/CategoriaController";
+import categoriaRoutes from "./routes/categoria-routes";
 
 
 class Server {
@@ -29,6 +31,7 @@ class Server {
         this.app.use('/usuario', usuarioRoutes);
         this.app.use('/editorial', editorialRoutes);
         this.app.use('/libro', libroRoutes);
+        this.app.use('/categoria', categoriaRoutes);
     }
 
     start():void{
