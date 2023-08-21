@@ -3,13 +3,21 @@ import pool from "../database";
 
 class TipoController{
     async getTipo(req:Request, res:Response){
+<<<<<<< HEAD
         const resul = await pool.query('SELECT id_tipo, nombre_tipo FROM tb_tipos');
+=======
+        const resul = await pool.query('SELECT * FROM tb_tipos');
+>>>>>>> f7a9012aeb28c97fc31a6f80a6a6e67529ac76d5
         res.json(resul[0]);        
     }
 
     async getByIdTipo(req:Request, res:Response){
         const id_tipo = req.params.id_tipo;
+<<<<<<< HEAD
         const resul = await pool.query('SELECT id_tipo, nombre_tipo FROM tb_tipos WHERE id_tipo=?', [id_tipo]);
+=======
+        const resul = await pool.query('SELECT * FROM tb_tipos WHERE id_tipo=?', [id_tipo]);
+>>>>>>> f7a9012aeb28c97fc31a6f80a6a6e67529ac76d5
         res.json(resul[0]);
     }
 
@@ -34,5 +42,9 @@ class TipoController{
 export const tipoController=new TipoController();
 
 export const createTipo = async (req: Request, res:Response) => {
+<<<<<<< HEAD
     const newUsuario = req.body;    
+=======
+    const newTipo = req.body;    
+>>>>>>> f7a9012aeb28c97fc31a6f80a6a6e67529ac76d5
 }
