@@ -30,22 +30,50 @@ class LibroController {
     }
     createLibro(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            yield database_1.default.query('INSERT INTO tb_libro SET ?', [req.body]);
+            yield database_1.default.query('INSERT INTO tb_libros SET ?', [req.body]);
             res.json({ message: 'Registro Guardado' });
         });
     }
     deleteLibro(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const id_libro = req.params.id_libro;
-            yield database_1.default.query('DELETE FROM tb_libro WHERE id_libro=?', [id_libro]);
+            const id_libro = req.params.id_libro; //id =req,params, id
+            yield database_1.default.query('DELETE FROM tb_libros WHERE id_libro=?', [id_libro]);
             res.json({ message: 'Registro Eliminado' });
         });
     }
     updateLibro(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { id_libro } = req.params; //id =req,params, id
-            yield database_1.default.query('UPDATE tb_libro SET ? WHERE id_libro= ?', [req.body, id_libro]);
+            yield database_1.default.query('UPDATE tb_libros SET ? WHERE id_libro= ?', [req.body, id_libro]);
             res.json({ message: 'Registro Actualizado' });
+        });
+    }
+    getByTitulo(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const titulo = req.params.titulo;
+            const resul = yield database_1.default.query('SELECT * FROM `tb_libros` INNER JOIN tb_editoriales On tb_libros.id_editorial = tb_editoriales.id_editorial Inner Join tb_categorias On tb_libros.id_categoria = tb_categorias.id_categoria INNER JOIN tb_tipos on tb_libros.id_tipo = tb_tipos.id_tipo Where titulo = ?', [titulo]);
+            res.json(resul[0]);
+        });
+    }
+    getByAutor(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const autor = req.params.autor;
+            const resul = yield database_1.default.query('SELECT * FROM `tb_libros` INNER JOIN tb_editoriales On tb_libros.id_editorial = tb_editoriales.id_editorial Inner Join tb_categorias On tb_libros.id_categoria = tb_categorias.id_categoria INNER JOIN tb_tipos on tb_libros.id_tipo = tb_tipos.id_tipo Where autor = ?', [autor]);
+            res.json(resul[0]);
+        });
+    }
+    getByTipo(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const nombre_tipo = req.params.nombre_tipo;
+            const resul = yield database_1.default.query('SELECT * FROM `tb_libros` INNER JOIN tb_editoriales On tb_libros.id_editorial = tb_editoriales.id_editorial Inner Join tb_categorias On tb_libros.id_categoria = tb_categorias.id_categoria INNER JOIN tb_tipos on tb_libros.id_tipo = tb_tipos.id_tipo Where nombre_tipo = ?', [nombre_tipo]);
+            res.json(resul[0]);
+        });
+    }
+    getByCategoria(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const categoria = req.params.categoria;
+            const resul = yield database_1.default.query('SELECT * FROM `tb_libros` INNER JOIN tb_editoriales On tb_libros.id_editorial = tb_editoriales.id_editorial Inner Join tb_categorias On tb_libros.id_categoria = tb_categorias.id_categoria INNER JOIN tb_tipos on tb_libros.id_tipo = tb_tipos.id_tipo Where categoria = ?', [categoria]);
+            res.json(resul[0]);
         });
     }
 }

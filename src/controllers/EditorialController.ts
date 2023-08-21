@@ -4,13 +4,13 @@ import { createUsuario } from "./UsuarioController";
  
  class EditorialController{
     async getEditorial(req:Request, res:Response){
-        const resul = await pool.query('SELECT * FROM tb_editoriales');
+        const resul = await pool.query('SELECT id_editorial, nombre_editorial FROM tb_editoriales');
         res.json(resul[0]);
     }
 
     async getByIdEditorial(req:Request, res:Response){
         const id_editorial = req.params.id_editorial;
-        const resul = await pool.query('SELECT * FROM tb_editoriales WHERE id_editorial=?', [id_editorial]);
+        const resul = await pool.query('SELECT id_editorial, nombre_editorial FROM tb_editoriales WHERE id_editorial=?', [id_editorial]);
         res.json(resul[0]);
     }
 

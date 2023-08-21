@@ -17,14 +17,14 @@ const database_1 = __importDefault(require("../database"));
 class EditorialController {
     getEditorial(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const resul = yield database_1.default.query('SELECT * FROM tb_editoriales');
+            const resul = yield database_1.default.query('SELECT id_editorial, nombre_editorial FROM tb_editoriales');
             res.json(resul[0]);
         });
     }
     getByIdEditorial(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const id_editorial = req.params.id_editorial;
-            const resul = yield database_1.default.query('SELECT * FROM tb_editoriales WHERE id_editorial=?', [id_editorial]);
+            const resul = yield database_1.default.query('SELECT id_editorial, nombre_editorial FROM tb_editoriales WHERE id_editorial=?', [id_editorial]);
             res.json(resul[0]);
         });
     }

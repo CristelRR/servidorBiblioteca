@@ -5,6 +5,11 @@ import indexRoutes from "./routes/index-routes";
 import usuarioRoutes from "./routes/usuario-routes";
 import editorialRoutes from "./routes/editorial-routes";
 import libroRoutes from "./routes/libro-routes";
+import tipoRoutes from "./routes/tipo-routes";
+import carreraRoutes from "./routes/carrera-routes";
+import categoriaRoutes from "./routes/categoria-routes";
+import prestamoRoutes from "./routes/prestamo-routes";
+import loginRoutes from "./routes/login-routes";
 
 
 class Server {
@@ -29,6 +34,11 @@ class Server {
         this.app.use('/usuario', usuarioRoutes);
         this.app.use('/editorial', editorialRoutes);
         this.app.use('/libro', libroRoutes);
+        this.app.use('/tipo', tipoRoutes);
+        this.app.use('/carrera', carreraRoutes);
+        this.app.use('/categoria', categoriaRoutes);
+        this.app.use('/prestamo', prestamoRoutes);
+        this.app.use('/login', loginRoutes);
     }
 
     start():void{

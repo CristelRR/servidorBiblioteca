@@ -10,6 +10,11 @@ const index_routes_1 = __importDefault(require("./routes/index-routes"));
 const usuario_routes_1 = __importDefault(require("./routes/usuario-routes"));
 const editorial_routes_1 = __importDefault(require("./routes/editorial-routes"));
 const libro_routes_1 = __importDefault(require("./routes/libro-routes"));
+const tipo_routes_1 = __importDefault(require("./routes/tipo-routes"));
+const carrera_routes_1 = __importDefault(require("./routes/carrera-routes"));
+const categoria_routes_1 = __importDefault(require("./routes/categoria-routes"));
+const prestamo_routes_1 = __importDefault(require("./routes/prestamo-routes"));
+const login_routes_1 = __importDefault(require("./routes/login-routes"));
 class Server {
     constructor() {
         this.app = (0, express_1.default)(); //inicializando la app
@@ -28,6 +33,11 @@ class Server {
         this.app.use('/usuario', usuario_routes_1.default);
         this.app.use('/editorial', editorial_routes_1.default);
         this.app.use('/libro', libro_routes_1.default);
+        this.app.use('/tipo', tipo_routes_1.default);
+        this.app.use('/carrera', carrera_routes_1.default);
+        this.app.use('/categoria', categoria_routes_1.default);
+        this.app.use('/prestamo', prestamo_routes_1.default);
+        this.app.use('/login', login_routes_1.default);
     }
     start() {
         this.app.listen(this.app.get('port'), () => {

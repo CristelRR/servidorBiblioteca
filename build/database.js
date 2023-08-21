@@ -6,7 +6,7 @@ const pool = (0, promise_1.createPool)({
     user: 'root',
     password: '',
     port: 3306,
-    database: 'biblio'
+    database: 'bd_biblioteca'
 });
 pool.getConnection().then(connection => {
     pool.releaseConnection(connection);
