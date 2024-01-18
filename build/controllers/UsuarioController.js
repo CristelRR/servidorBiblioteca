@@ -8,43 +8,40 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.createUsuario = exports.usuarioController = void 0;
-const database_1 = __importDefault(require("../database"));
+const database_1 = require("../database");
 class UsuarioController {
     getUsuario(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const resul = yield database_1.default.query('SELECT * FROM tb_usuarios');
+            const resul = yield database_1.pool.query('SELECT * FROM tb_usuarios');
             res.json(resul[0]);
         });
     }
     getByIdUsuario(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const id_usuario = req.params.id_usuario;
-            const resul = yield database_1.default.query('SELECT * FROM tb_usuarios WHERE id_usuario=?', [id_usuario]);
+            const resul = yield database_1.pool.query('SELECT * FROM tb_usuarios WHERE id_usuario=?', [id_usuario]);
             res.json(resul[0]);
         });
     }
     createUsuario(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            yield database_1.default.query('INSERT INTO tb_usuarios SET ?', [req.body]);
+            yield database_1.pool.query('INSERT INTO tb_usuarios SET ?', [req.body]);
             res.json({ message: 'Registro guardado' });
         });
     }
     deleteUsuario(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const id_usuario = req.params.id_usuario; //id =req,params, id
-            yield database_1.default.query('DELETE FROM tb_usuarios WHERE id_usuario=?', [id_usuario]);
+            yield database_1.pool.query('DELETE FROM tb_usuarios WHERE id_usuario=?', [id_usuario]);
             res.json({ message: 'Registro Eliminado' });
         });
     }
     updateUsuario(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { id_usuario } = req.params; //id =req,params, id
-            yield database_1.default.query('UPDATE tb_usuarios SET ? WHERE id_usuario= ?', [req.body, id_usuario]);
+            yield database_1.pool.query('UPDATE tb_usuarios SET ? WHERE id_usuario= ?', [req.body, id_usuario]);
             res.json({ message: 'Registro Actualizado' });
         });
     }

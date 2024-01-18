@@ -1,9 +1,6 @@
 import { Router } from "express";
-<<<<<<< HEAD
 import { tipoController } from "../controllers/TipoController";
-=======
-import { tipoController } from "../controllers/TipoController"; 
->>>>>>> f7a9012aeb28c97fc31a6f80a6a6e67529ac76d5
+
 
 class TipoRoutes{
     public router:Router= Router();

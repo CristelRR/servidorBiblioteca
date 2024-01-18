@@ -1,23 +1,17 @@
 import { Request, Response } from "express";
-import pool from "../database";
+import {pool}
+ from "../database";
 
 class CarreraController{
     async getCarrera(req:Request, res:Response){
-<<<<<<< HEAD
         const resul = await pool.query('SELECT id_carrera, carrera, area FROM tb_carreras');
-=======
-        const resul = await pool.query('SELECT * FROM tb_carreras');
->>>>>>> f7a9012aeb28c97fc31a6f80a6a6e67529ac76d5
         res.json(resul[0]);        
     }
 
     async getByIdCarrera(req:Request, res:Response){
         const id_carrera = req.params.id_carrera;
-<<<<<<< HEAD
         const resul = await pool.query('SELECT id_carrera, carrera, area FROM tb_carreras WHERE id_carrera=?', [id_carrera]);
-=======
-        const resul = await pool.query('SELECT * FROM tb_carreras WHERE id_carrera=?', [id_carrera]);
->>>>>>> f7a9012aeb28c97fc31a6f80a6a6e67529ac76d5
+
         res.json(resul[0]);
     }
 

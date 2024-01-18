@@ -15,6 +15,7 @@ const carrera_routes_1 = __importDefault(require("./routes/carrera-routes"));
 const categoria_routes_1 = __importDefault(require("./routes/categoria-routes"));
 const prestamo_routes_1 = __importDefault(require("./routes/prestamo-routes"));
 const login_routes_1 = __importDefault(require("./routes/login-routes"));
+const config_1 = require("./config");
 class Server {
     constructor() {
         this.app = (0, express_1.default)(); //inicializando la app
@@ -22,7 +23,7 @@ class Server {
         this.routes();
     }
     config() {
-        this.app.set('port', process.env.PORT || 4000);
+        this.app.set('port', config_1.PORT);
         this.app.use((0, morgan_1.default)('dev'));
         this.app.use((0, cors_1.default)());
         this.app.use(express_1.default.json()); //ACEPTA FORMATO JSON

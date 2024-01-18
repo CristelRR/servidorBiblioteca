@@ -8,43 +8,40 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.createTipo = exports.tipoController = void 0;
-const database_1 = __importDefault(require("../database"));
+const database_1 = require("../database");
 class TipoController {
     getTipo(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const resul = yield database_1.default.query('SELECT id_tipo, nombre_tipo FROM tb_tipos');
+            const resul = yield database_1.pool.query('SELECT id_tipo, nombre_tipo FROM tb_tipos');
             res.json(resul[0]);
         });
     }
     getByIdTipo(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const id_tipo = req.params.id_tipo;
-            const resul = yield database_1.default.query('SELECT id_tipo, nombre_tipo FROM tb_tipos WHERE id_tipo=?', [id_tipo]);
+            const resul = yield database_1.pool.query('SELECT id_tipo, nombre_tipo FROM tb_tipos WHERE id_tipo=?', [id_tipo]);
             res.json(resul[0]);
         });
     }
     createTipo(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            yield database_1.default.query('INSERT INTO tb_tipos SET ?', [req.body]);
+            yield database_1.pool.query('INSERT INTO tb_tipos SET ?', [req.body]);
             res.json({ message: 'Registro guardado' });
         });
     }
     deleteTipo(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const id_tipo = req.params.id_tipo; //id =req,params, id
-            yield database_1.default.query('DELETE FROM tb_tipos WHERE id_tipo=?', [id_tipo]);
+            yield database_1.pool.query('DELETE FROM tb_tipos WHERE id_tipo=?', [id_tipo]);
             res.json({ message: 'Registro Eliminado' });
         });
     }
     updateTipo(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { id_tipo } = req.params; //id =req,params, id
-            yield database_1.default.query('UPDATE tb_tipos SET ? WHERE id_tipo= ?', [req.body, id_tipo]);
+            yield database_1.pool.query('UPDATE tb_tipos SET ? WHERE id_tipo= ?', [req.body, id_tipo]);
             res.json({ message: 'Registro Actualizado' });
         });
     }

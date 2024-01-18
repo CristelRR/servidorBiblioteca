@@ -9,8 +9,7 @@ class LoginRoutes{
     }
 
     config(){
-        this.router.post('/:id_usuario', loginController.getLogin); //CONSULTAR TODOS
-        
+        this.router.post('/:nombre', loginController.getUser); 
     }
 }
 

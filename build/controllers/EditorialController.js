@@ -8,43 +8,40 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.createEditorial = exports.editorialController = void 0;
-const database_1 = __importDefault(require("../database"));
+const database_1 = require("../database");
 class EditorialController {
     getEditorial(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const resul = yield database_1.default.query('SELECT id_editorial, nombre_editorial FROM tb_editoriales');
+            const resul = yield database_1.pool.query('SELECT id_editorial, nombre_editorial FROM tb_editoriales');
             res.json(resul[0]);
         });
     }
     getByIdEditorial(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const id_editorial = req.params.id_editorial;
-            const resul = yield database_1.default.query('SELECT id_editorial, nombre_editorial FROM tb_editoriales WHERE id_editorial=?', [id_editorial]);
+            const resul = yield database_1.pool.query('SELECT id_editorial, nombre_editorial FROM tb_editoriales WHERE id_editorial=?', [id_editorial]);
             res.json(resul[0]);
         });
     }
     createEditorial(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            yield database_1.default.query('INSERT INTO tb_editoriales SET ?', [req.body]);
+            yield database_1.pool.query('INSERT INTO tb_editoriales SET ?', [req.body]);
             res.json({ message: 'Registro Guardado' });
         });
     }
     deleteEditorial(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const id_editorial = req.params.id_editorial;
-            yield database_1.default.query('DELETE FROM tb_editoriales WHERE id_editorial=?', [id_editorial]);
+            yield database_1.pool.query('DELETE FROM tb_editoriales WHERE id_editorial=?', [id_editorial]);
             res.json({ message: 'Registro Eliminado' });
         });
     }
     updateEditorial(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { id_editorial } = req.params; //id =req,params, id
-            yield database_1.default.query('UPDATE tb_editoriales SET ? WHERE id_editorial= ?', [req.body, id_editorial]);
+            yield database_1.pool.query('UPDATE tb_editoriales SET ? WHERE id_editorial= ?', [req.body, id_editorial]);
             res.json({ message: 'Registro Actualizado' });
         });
     }

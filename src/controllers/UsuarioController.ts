@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import pool from "../database";
+import {pool} from "../database";
 
 class UsuarioController{
     async getUsuario(req:Request, res:Response){

@@ -1,5 +1,5 @@
 import { Request, Response, json } from "express";
-import pool from "../database";
+import {pool} from "../database";
 import { createUsuario } from "./UsuarioController";
  
  class EditorialController{

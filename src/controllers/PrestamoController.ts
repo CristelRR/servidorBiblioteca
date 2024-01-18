@@ -1,28 +1,28 @@
 import { Request, Response } from "express";
-import pool from "../database";
+import { pool } from "../database";
 
 class PrestamoController{
     async getPrestamo(req:Request, res:Response){
-<<<<<<< HEAD
-        const resul = await pool.query('SELECT id_prestamo, id_usuario, id_libro, fecha_prestamo, fecha_devolucion, fecha_entrega, estado FROM tb_prestamos');
-=======
         const resul = await pool.query('SELECT * FROM tb_prestamos');
->>>>>>> f7a9012aeb28c97fc31a6f80a6a6e67529ac76d5
         res.json(resul[0]);        
     }
 
     async getByIdPrestamo(req:Request, res:Response){
         const id_prestamo = req.params.id_prestamo;
-<<<<<<< HEAD
-        const resul = await pool.query('SELECT id_prestamo, id_usuario, id_libro, fecha_prestamo, fecha_devolucion, fecha_entrega, estado FROM tb_prestamos WHERE id_prestamo=?', [id_prestamo]);
-=======
         const resul = await pool.query('SELECT * FROM tb_prestamos WHERE id_prestamo=?', [id_prestamo]);
->>>>>>> f7a9012aeb28c97fc31a6f80a6a6e67529ac76d5
         res.json(resul[0]);
     }
 
     async createPrestamo(req:Request, res:Response){
-        await pool.query('INSERT INTO tb_prestamos SET ?', [req.body]);
+       await pool.query('INSERT INTO tb_prestamos SET ?', [req.body]);
+       //const {id_prestamo} = req.body.id_prestamo;
+       //const {id_usuario} = req.body.id_usuario;
+       //const {id_libro} = req.body.id_libro;
+      // const {fecha_prestamo} = req.body.fecha_prestamo;
+       //const {fecha_devolucion} = req.body.fecha_devolucion;
+       //const {fecha_entrega} = req.body.fecha_entrega;
+       //const {estado} = req.body.estado;
+       //await pool.query('INSERT INTO tb_prestamos (id_usuario,id_libro,fecha_prestamo,fecha_devolucion,fecha_entrega,estado) VALUES (?, ?, ?, ?,?,?)',[id_usuario,id_libro,fec,null,null,null]);
         res.json({message:'Registro guardado'})
     }
 

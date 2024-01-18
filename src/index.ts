@@ -5,18 +5,14 @@ import indexRoutes from "./routes/index-routes";
 import usuarioRoutes from "./routes/usuario-routes";
 import editorialRoutes from "./routes/editorial-routes";
 import libroRoutes from "./routes/libro-routes";
-<<<<<<< HEAD
 import tipoRoutes from "./routes/tipo-routes";
 import carreraRoutes from "./routes/carrera-routes";
 import categoriaRoutes from "./routes/categoria-routes";
 import prestamoRoutes from "./routes/prestamo-routes";
 import loginRoutes from "./routes/login-routes";
-=======
-import { categoriaController } from "./controllers/CategoriaController";
-import categoriaRoutes from "./routes/categoria-routes";
-import carreraRoutes from "./routes/carrera-routes";
-import prestamoRoutes from "./routes/prestamo-routes";
->>>>>>> f7a9012aeb28c97fc31a6f80a6a6e67529ac76d5
+import {PORT} from './config';
+
+
 
 
 class Server {
@@ -29,7 +25,7 @@ class Server {
     }
 
     config():void{
-        this.app.set('port', process.env.PORT || 4000); 
+        this.app.set('port', PORT); 
         this.app.use(morgan('dev'));
         this.app.use(cors());
         this.app.use(express.json());  //ACEPTA FORMATO JSON
@@ -41,17 +37,12 @@ class Server {
         this.app.use('/usuario', usuarioRoutes);
         this.app.use('/editorial', editorialRoutes);
         this.app.use('/libro', libroRoutes);
-<<<<<<< HEAD
         this.app.use('/tipo', tipoRoutes);
         this.app.use('/carrera', carreraRoutes);
         this.app.use('/categoria', categoriaRoutes);
         this.app.use('/prestamo', prestamoRoutes);
         this.app.use('/login', loginRoutes);
-=======
-        this.app.use('/categoria', categoriaRoutes);
-        this.app.use('/carreras', carreraRoutes);
-        this.app.use('/prestamo', prestamoRoutes)
->>>>>>> f7a9012aeb28c97fc31a6f80a6a6e67529ac76d5
+
     }
 
     start():void{

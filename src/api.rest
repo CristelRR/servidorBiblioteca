@@ -1,5 +1,5 @@
 ###CONSULTA USUARIO
-POST http://localhost:4000/login/1222100464
+POST http://localhost:4000/login/1222100424
 
 Content-Type: application/json
 {
@@ -27,21 +27,15 @@ Content-Type: application/json
   }
 
 ### Actualizar un usuario
-PUT http://localhost:4000/usuario/4
+POST  http://localhost:4000/login/Eduardo
 Content-Type: application/json
 
   {
-    "nombre": "Lalo",
-    "ap_paterno": "González ",
-    "ap_materno": "Ortiz",
-    "correo": "eduardo@gmail.com",
-    "contraseña": "12345678",
-    "tipo": "Alumno",
-    "id_carrera": 8
+    "contrasena": "123456789"
   }
 
 ### Eliminar un usuario
-DELETE http://localhost:4000/usuario/8
+DELETE http://localhost:4000/login/8
 Content-Type: application/json
 
 
